@@ -23,7 +23,7 @@ dump($gites);
 
               $gite = new Gite();
               $gite -> setNom("Mon premier Gite")
-                     -> setDescriptiion("Et consequat ut velit velit qui magna nulla dolore id irure ullamco non ullamco.")
+                     -> setDescription("Et consequat ut velit velit qui magna nulla dolore id irure ullamco non ullamco.")
                      -> setSurface(400)
                      -> setCouchage(5)
                      ->setChambres(3);
