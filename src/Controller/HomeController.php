@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
  
  /** 
- *@Route("/", name="home")
+ *@Route("/", name="home_index")
  */
         public function index (ManagerRegistry $doctrine)
         {
@@ -44,7 +44,7 @@ dump($gites);
 
 
         /** 
- *@Route("/contact", name="contact")
+ *@Route("/contact", name="home_contact")
  */
 
         public function contact()
@@ -56,3 +56,4 @@ dump($gites);
         }
 
     }
+    ?>
