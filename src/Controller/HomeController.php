@@ -17,20 +17,9 @@ use Symfony\Component\Routing\Annotation\Route;
         {
                      $repository = $doctrine ->getRepository(Gite::class);
                      $gites = $repository->findAll();
-dump($gites);
-
-             /* $manager = $doctrine ->getManager();
-
-              $gite = new Gite();
-              $gite -> setNom("Mon premier Gite")
-                     -> setDescription("Et consequat ut velit velit qui magna nulla dolore id irure ullamco non ullamco.")
-                     -> setSurface(400)
-                     -> setCouchage(5)
-                     ->setChambres(3);
 
 
-              $manager ->persist($gite);
-              $manager->flush(); */
+     
 
                 return $this ->render("home/index.html.twig",[
                      "title" => "Bienvenue sur mon site",
