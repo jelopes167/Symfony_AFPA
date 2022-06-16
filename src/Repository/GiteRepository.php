@@ -39,6 +39,65 @@ class GiteRepository extends ServiceEntityRepository
         }
     }
 
+
+/**
+ * @return Gite[]
+ */
+
+
+    public function findGiteSearch($search)
+    {
+          $query = $this-> createQueryBuilder('g');
+                if($search->getMinSurface())
+                {
+                    $query = $query 
+                    -> andWhere("g.surface >= :minSurface")
+                    ->setParameter('minSurface', $search->getMinSurface());
+                }
+
+
+                if($search->getMinChambres())
+                {
+                    $query = $query 
+                    -> andWhere("g.chambres >= :minChambres")
+                    ->setParameter('minChambres', $search->getMinChambres());
+                }
+
+
+                if($search->getMinCouchage())
+                {
+                    $query = $query 
+                    -> andWhere("g.couchage >= :minCouchage")
+                    ->setParameter('minCouchage', $search->getMinCouchage());
+                }
+
+                
+
+
+                $query = $query
+                -> orderBy ('g.id', "ASC")
+                ->getQuery()
+                ->getResult();
+
+
+            return $query;
+
+        //Select * from Gite g order by g.id ASC;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    /**
 //     * @return Gite[] Returns an array of Gite objects
 //     */

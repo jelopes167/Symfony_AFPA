@@ -17,6 +17,7 @@
 </div>
 
 <div class="row">
+<h2>Description</h2>
 <div class= "col-md-10">
                 {{gite.descriptiion}}
 </div
@@ -24,7 +25,8 @@
 </div>
 
 <div class="row">
-    <div class ="col-md-6">
+<h2>Caracteristiques</h2>
+    <div class ="col-md-4">
         <table class="table">
                 <tr>
                     <th>Surface</th>
@@ -45,8 +47,19 @@
                 </tr>
                 
         </table>
-        <div class ="col-md-6">
         </div>
+        <div class="col-md-2"></div>
+        <div class ="col-md-6">
+        <table class="table">
+                   {% for equipement in gite.equipements %}
+                   <tr>
+                   <td>{{ equipement.name }}</td>
+                   </tr>
+                   {% endfor %}
+        </table>
+        </div>
+        <div class="group-form">
+        <a href ="{{path('home_index')}}" class="btn btn-dark">Retour</a>
     </div>
 </div>
 {% endblock %}
