@@ -2,12 +2,17 @@
 
 namespace App\Form;
 
+use App\Entity\Gite;
+use App\Entity\Equipement;
 use App\Entity\GiteSearch;
+use App\Repository\EquipementRepository;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class GiteSearchType extends AbstractType
 {
@@ -30,6 +35,15 @@ class GiteSearchType extends AbstractType
                 "attr" => ["placeholder" => "Nombre de couchages minimum"]
             ])
 
+            ->add('equipements', EntityType::class,[
+                "class" =>Equipement::class,
+                "choice_label"=>"name",
+                "multiple" =>"true",
+                'mapped' => false,
+                "label"=>false,
+                "expanded"=>false
+            ])
+
 
 
             ->add ('submit',SubmitType::class,[
@@ -45,4 +59,7 @@ class GiteSearchType extends AbstractType
             'data_class' => GiteSearch::class,
         ]);
     }
+
+
 }
+

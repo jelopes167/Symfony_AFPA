@@ -70,8 +70,6 @@ class GiteFixtures extends Fixture
             ->setSurface(random_int(50,200))
             ->setChambres(random_int(1,10))
             ->setCouchage(random_int(3,15))
-            ->addEquipement($faker->randomElement($equipements))
-            ->addEquipement($faker->randomElement($equipements))
             ->addEquipement($faker->randomElement($equipements));
 
                 $manager->persist($gite);

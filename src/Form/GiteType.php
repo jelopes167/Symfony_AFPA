@@ -22,10 +22,12 @@ class GiteType extends AbstractType
             ->add('chambres')
             ->add('couchage')
             ->add('equipements', EntityType::class,[
-                "class" => Equipement::class,
-                "choice_label" => "name",
-                "multiple" => true,
-                "expanded" => true
+                "class" =>Equipement::class,
+                "choice_label"=>"name",
+                "multiple" =>"true",
+                'mapped' => false,
+                "label"=>false,
+                "expanded"=>false
             ])
         ;
     }

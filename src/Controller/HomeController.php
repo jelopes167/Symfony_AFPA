@@ -36,13 +36,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
                             }
 
 
-
-
-
-
-                     
-
-
      
 
                 return $this ->render("home/index.html.twig",[

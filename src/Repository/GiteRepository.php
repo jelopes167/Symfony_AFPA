@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Repository\EquipementRepository;
+use App\Entity\Equipement;
 use App\Entity\Gite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -70,9 +72,15 @@ class GiteRepository extends ServiceEntityRepository
                     -> andWhere("g.couchage >= :minCouchage")
                     ->setParameter('minCouchage', $search->getMinCouchage());
                 }
-
+                         
+                if($search->getEquipements())
+                {
+                    
+                    $query = $query 
+                    -> andWhere(":equipement MEMBER OF g.equipements")
+                    ->setParameter("equipements", $search->getEquipements);
                 
-
+}
 
                 $query = $query
                 -> orderBy ('g.id', "ASC")

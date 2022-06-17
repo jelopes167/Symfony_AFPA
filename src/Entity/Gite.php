@@ -9,33 +9,82 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
+
 #[ORM\Entity(repositoryClass: GiteRepository::class)]
 class Gite
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+ 
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
 
+
+
+
+    #[ORM\Column(type: 'string', length: 255)]
+      /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+     * @Assert\Length(
+    *      min = 3,
+    *      
+    *      minMessage= "Le nom doit faire au moins {{ limit }} caractères",
+    * 
+    * )
+    */
     private string $nom;
 
-    #[ORM\Column(type: 'text')]
 
+  
+
+
+    #[ORM\Column(type: 'text')]
+       /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+     * @Assert\Length(
+    *      min = 10,
+    *      max = 255,
+    *      minMessage= "La description doit faire au moins {{ limit }} caractères",
+    *      maxMessage="La description ne peut pas faire plus de {{ limit }} caractères",
+    * )
+    */
     private string $descriptiion;
 
-    #[ORM\Column(type: 'integer')]
 
 
-    
-    private int $surface;
+
 
     #[ORM\Column(type: 'integer')]
+   /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+     * @Assert\Range(
+    *      min = 30,
+    *      max = 300,
+    *      notInRangeMessage = "La surface doit être comprise entre {{ min }} et {{ max }}m² ",
+    * )
+    */
+    private int $surface;    
+
+
+
+
+
+    #[ORM\Column(type: 'integer')]
+   /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+      */
     private int $chambres;
 
+
     #[ORM\Column(type: 'integer')]
-    private $couchage;
+  /**
+     * @Assert\NotBlank
+     */
+    private $couchage; 
+ /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+      */
 
     #[ORM\ManyToMany(targetEntity: Equipement::class, inversedBy: 'gites')]
     private $equipements;

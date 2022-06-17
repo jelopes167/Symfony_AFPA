@@ -16,6 +16,15 @@ class Equipement
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+     /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+     * @Assert\Length(
+    *      min = 3,
+    *      
+    *      minMessage= "Le nom doit faire au moins {{ limit }} caractères",
+    * 
+    * )
+    */
     private $name;
 
     #[ORM\ManyToMany(targetEntity: Gite::class, mappedBy: 'equipements')]

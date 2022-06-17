@@ -1,44 +1,50 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class GiteSearch 
 {
-/***
- * @var int|null
- *//**
-     * @Assert\Range(
-     *      min = 30,
-     *      max = 300,
-     *      notInRangeMessage = "You must be between {{ min }}cm and {{ max }}cm tall to enter",
-     * )
-     */
     /**
-     * @Assert\NotBlank
-     */
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+     * @Assert\Range(
+    *      min = 30,
+    *      max = 300,
+    *      notInRangeMessage = "La surface doit être comprise entre {{ min }}  et {{ max }} m² ",
+    * )
+* @var int|null
+*/
 private  $minSurface;
 
 
-/***
- * @var int|null
- *//**
-     * @Assert\NotBlank
-     */
-
+ /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+     
+* @var int|null
+*/
 private  $minChambres;
 
 
-/***
- * @var int|null
- *//**
-     * @Assert\NotBlank
-     */
 
+ /**
+     * @Assert\NotBlank(message="La valeur ne peut pas être nulle")
+     
+* @var int|null
+*/
+private  $minCouchage;
 
-private   $minCouchage;
+/**
+ * 
+ *
+ * @var ArrayCollection
+ */
+private $Equipement;
 
-
+public function __construct()
+{
+    $this->Equipement = new ArrayCollection();
+}
 
 
 /**
@@ -97,6 +103,32 @@ return $this->minCouchage;
 public function setMinCouchage($minCouchage)
 {
 $this->minCouchage = $minCouchage;
+
+return $this;
+}
+
+
+
+/**
+ * Get the value of Equipements
+ *
+ * @return  ArrayCollection
+ */ 
+public function getEquipements()
+{
+return $this->Equipement;
+}
+
+/**
+ * Set the value of Equipements
+ *
+ * @param  ArrayCollection  $Equipements
+ *
+ * @return  self
+ */ 
+public function setEquipements(ArrayCollection $Equipements)
+{
+$this->Equipement = $Equipements;
 
 return $this;
 }
